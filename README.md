@@ -1,80 +1,45 @@
-# Proyecto final de devCamp fullstack developer
+# Proyecto final de Microblog de devCamp fullstack developer Bottega University
 
-## Explicación
+## Descripción de la Aplicación
 
-El proyecto actual busca cumplir los requerimientos de: `autenticación`, `operaciones CRUD` y `Search Bar`.
+Este proyecto es un Microblog desarrollado como parte final del programa de Certificado de Desarrollo Full Stack. El Microblog se centra en permitir a los usuarios registrados crear, ver, editar y eliminar publicaciones. Cada publicación puede contener únicamente un contenido asociado (aunque es ampliable). Además, el sistema incluye un sistema de autenticación para que los usuarios puedan iniciar sesión de manera sencilla.
+
+`Lenguajes y Tecnologías`
+He utilizado una variedad de tecnologías y enfoques para construir esta aplicación, como se detalla a continuación:
+React: La interfaz de usuario se ha desarrollado utilizando React.
+Python: El backend de la aplicación está desarrollado en Python, que se encarga de gestionar la lógica del servidor y las operaciones de la base de datos MySQL.
+MySQL: La base de datos que respalda la aplicación es MySQL (nombre: fullstack_bottega), que almacena la información de los usuarios y las publicaciones con sus respectivos id’s.
+SCSS: Se ha aplicado estilo a la interfaz de usuario utilizando hojas de estilo SCSS para crear una experiencia visual atractiva y amigable.
+
+## Metodologías
+
+`Control de Versiones`: He utilizado GitHub para gestionar y controlar versiones del código.
+
+`Autenticación y Autorización`: Implementamos un sistema de autenticación sencillo y minimalista donde sólo es necesario un email para iniciar sesión.
+
+`Operaciones CRUD` (Crear, Leer, Actualizar, Eliminar) en las publicaciones, permitiendo a los usuarios gestionar su contenido de manera eficiente.
+
+`API`: La comunicación entre el frontend y el backend se realiza a través de una API, en este caso la integración de los tres componentes: backend, frontend y la base de datos MySQL se alojan en la Plataforma Railway con un Plan Starter (Gratuito).
 
 
+## Nuevas Características Implementadas
 
+Para cumplir con los requisitos del proyecto, he agregado las siguientes características:
+`Sistema de Autenticación`: Los usuarios pueden registrarse e iniciar sesión de manera muy simple.
+`Operaciones CRUD en Publicaciones`: Los usuarios pueden crear nuevas publicaciones, editar las existentes y eliminarlas según sus necesidades.
+`Interfaz de Usuario Responsiva`: La aplicación es completamente receptiva y se adapta a diferentes tamaños de pantalla, lo que garantiza una experiencia de usuario óptima en dispositivos móviles y de escritorio.
+`GitHub Repositorio`: Hemos alojado el código fuente de nuestro proyecto en GitHub para facilitar el control de versiones y el acceso público al código.
+`Enfoque Creativo`:
+Para cumplir con el requisito de incluir una característica que no se enseñó en el curso, hemos incorporado un sistema de búsqueda en el input principal que permite tanto añadir un nuevo texto como buscar. Esto se realiza a través de los botones ‘Add’ y ‘Search’.
+Enlaces Relevantes
+`Aplicación en Vivo`: https://proyecto-final-frontend-production-6e2d.up.railway.app/
+`Repositorio en GitHub`: 
+Frontend: https://github.com/koldo-a/proyecto-final-frontend
+Backend: https://github.com/koldo-a/backend-2
+`Usuario de Prueba` (sin necesidad de contraseña): koldo@gmail.com, pepe@gmail.com 
 
+## Agradecimientos
+Querría agradecer a Jordan y los tutores por su apoyo y orientación a lo largo del programa. También querría agradecer a la comunidad de desarrollo por proporcionar recursos y soluciones valiosas durante el proceso de construcción del proyecto.
 
-# Getting Started with Create React App
+Autor: `Koldo Arretxea García`
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

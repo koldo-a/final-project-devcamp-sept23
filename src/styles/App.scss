@@ -1,0 +1,321 @@
+@import './home.scss';
+
+// Estilos generales
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #000000;
+}
+
+.login {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.titulo {
+  font-size: 24px;
+  text-decoration: underline;
+}
+
+.titulo1 {
+  padding: 10px;
+  line-height: 2em;
+  background-color: lightgray;
+  
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+
+}
+
+.container1 {
+  background-color: black;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.messages {
+  display: flex;
+  justify-content: center;
+  font-weight: 800;
+  max-width: 70%;
+}
+
+.subcontainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 40px;
+  padding: 20px;
+
+  input {
+    height: 100px;
+    background-color: rgb(183, 184, 253);
+
+  }
+}
+
+.container-heading {
+  display: flex;
+  justify-content: center;
+
+  p {
+    margin-right: 20px;
+  }
+
+}
+
+.listado-items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: auto;
+}
+
+input[type="text"] {
+  width: 80%;
+  max-width: 600px;
+  border-radius: 5px;
+  margin-right: 10px;
+  padding: 10px;
+  font-size: 16px;
+  &:hover {
+    border: 2px solid #002fff;
+    border-radius: 5px;
+  }
+}
+
+button {
+  background-color: #4caf50;
+  color: #fff;
+  border-radius: 5px;
+  border: 1px solid black;
+  padding: 10px 20px;
+  margin-right: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  width: 90%;
+  background-color: #e0e0e0;
+  border-radius: 15px;
+  padding: 0px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;  
+  justify-content: space-around;
+  align-items: center;
+  justify-content: center;
+  text-align: justify;
+}
+
+li button:hover {
+  background-color: #e53935;
+}
+
+.li-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.button-edit {
+  &:hover {background-color: rgb(0, 26, 255);}
+}
+// Otros estilos personalizados aquí
+
+.login-msg {
+  font-size: 1em;
+  margin-top: 40px;
+  color: rgb(161, 16, 16);
+  opacity: 1; 
+  transition: opacity 5s ease-in-out;
+}
+
+.login-msg.visible {
+  opacity: 0; 
+}
+
+.regis-msg {
+  font-size: 1em;
+  margin-top: 40px;
+  color: rgb(161, 16, 16);
+  opacity: 1; 
+  transition: opacity 5s ease-in-out; 
+}
+
+.regis-msg.visible {
+  opacity: 0; 
+}
+
+.author {
+  display: flex;
+  justify-content: center;
+  height: 200px;
+  align-items: center;
+  color: rgb(48, 50, 177);
+
+  a {
+    text-decoration: none;
+    color: rgb(88, 90, 230);
+    font-weight: 800;
+  }
+}
+
+.texto-li {
+  text-align: justify;
+  width: 50%;
+  padding:5%;
+}
+
+.fecha-li {
+  margin-top: 15px;
+  color:rgb(22, 26, 247);
+  font-size:small;
+  font-weight: bold;
+  text-indent: 5%;
+}
+/* Media query */
+@media (max-width: 900px) {
+  .login {
+    flex-direction: column;
+ 
+    input[type="text"] {
+      margin-bottom: 15px;
+      height: 40px;
+    }
+  
+    button {
+      border-radius: 10px;
+      margin-bottom: 5px;
+    }
+  }
+
+  li {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    max-width: 90%;
+    justify-content: center;
+    align-items: center;
+
+    button {
+      width: 100%;
+    }
+
+  }
+
+  .li-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+  }
+
+  .listado-items {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container {
+    padding: 0px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    }
+  
+  .container-heading {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .listado-items {
+    font-size: small;
+  }
+
+  .texto-li {
+    text-align: justify;
+    width: 90%;
+    padding:5%;
+  }
+
+  .subcontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 80%;
+
+    input {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    button {
+      width: 50%;
+      margin-bottom: 10px;
+    }
+
+  }
+
+  .button-edit {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+}
+
+@media (min-width: 1850px) {
+  body{
+    font-size: 2em
+  };
+  button {
+    height: 3em;
+    width: 10em;
+    margin-bottom: 10px;
+    font-size: 1em;
+  }
+
+  input {
+    height: 3em;
+    margin-bottom: 10px;
+  }
+
+  .login {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .fecha-li {
+    font-size: 1em;
+  }
+}

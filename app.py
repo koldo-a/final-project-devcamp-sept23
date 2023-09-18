@@ -131,8 +131,6 @@ def handle_users():
 
         return jsonify(users)
 
-#----------------------------------------------------------------
-
 @app.route('/items/<int:index>', methods=['DELETE', 'PUT'])
 def handle_item_by_index(index):
     if request.method == 'DELETE':

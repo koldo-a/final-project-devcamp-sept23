@@ -6,9 +6,13 @@ Este proyecto es un Microblog desarrollado como parte final del programa de Cert
 
 `Lenguajes y Tecnologías`
 He utilizado una variedad de tecnologías y enfoques para construir esta aplicación, como se detalla a continuación:
+
 React: La interfaz de usuario se ha desarrollado utilizando React.
+
 Python: El backend de la aplicación está desarrollado en Python, que se encarga de gestionar la lógica del servidor y las operaciones de la base de datos MySQL.
+
 MySQL: La base de datos que respalda la aplicación es MySQL (nombre: fullstack_bottega), que almacena la información de los usuarios y las publicaciones con sus respectivos id’s.
+
 SCSS: Se ha aplicado estilo a la interfaz de usuario utilizando hojas de estilo SCSS para crear una experiencia visual atractiva y amigable.
 
 ## Metodologías
@@ -25,17 +29,27 @@ SCSS: Se ha aplicado estilo a la interfaz de usuario utilizando hojas de estilo 
 ## Nuevas Características Implementadas
 
 Para cumplir con los requisitos del proyecto, he agregado las siguientes características:
+
 `Sistema de Autenticación`: Los usuarios pueden registrarse e iniciar sesión de manera muy simple.
+
 `Operaciones CRUD en Publicaciones`: Los usuarios pueden crear nuevas publicaciones, editar las existentes y eliminarlas según sus necesidades.
+
 `Interfaz de Usuario Responsiva`: La aplicación es completamente receptiva y se adapta a diferentes tamaños de pantalla, lo que garantiza una experiencia de usuario óptima en dispositivos móviles y de escritorio.
+
 `GitHub Repositorio`: Hemos alojado el código fuente de nuestro proyecto en GitHub para facilitar el control de versiones y el acceso público al código.
+
 `Enfoque Creativo`:
 Para cumplir con el requisito de incluir una característica que no se enseñó en el curso, hemos incorporado un sistema de búsqueda en el input principal que permite tanto añadir un nuevo texto como buscar. Esto se realiza a través de los botones ‘Add’ y ‘Search’.
 Enlaces Relevantes
+
 `Aplicación en Vivo`: https://proyecto-final-frontend-production-6e2d.up.railway.app/
+
 `Repositorio en GitHub`: 
+
 Frontend: https://github.com/koldo-a/proyecto-final-frontend
+
 Backend: https://github.com/koldo-a/backend-2
+
 `Usuario de Prueba` (sin necesidad de contraseña): koldo@gmail.com, pepe@gmail.com 
 
 ## Agradecimientos

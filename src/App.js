@@ -140,7 +140,7 @@ const App = () => {
   };
 
   const handleEditItem = (id) => {
-    const newName = prompt('Enter the new name');
+    const newName = prompt('Entra el nuevo valor:');
     if (newName) {
       try {
         axios.put(`${API_URL}/items/${id}`, { name: newName })

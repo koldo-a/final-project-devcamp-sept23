@@ -139,7 +139,7 @@ const App = () => {
     }
   };
 
-  const handleEditItem = (id) => {
+/*  const handleEditItem = (id) => {
     const newName = prompt('Entra el nuevo valor:');
     if (newName) {
       try {
@@ -150,7 +150,26 @@ const App = () => {
         console.error('Error editing item:', error);
       }
     }
+  };*/
+
+  const handleEditItem = async (id) => {
+    try {
+      // Obtén el valor actual de la base de datos para el elemento con el ID especificado
+      const response = await axios.get(`${API_URL}/items/${id}`);
+      const currentValue = response.data.name;
+  
+      // Muestra el valor actual en el cuadro de diálogo y permite al usuario editarlo
+      const newName = prompt(`Modifica el valor (Valor actual: ${currentValue}):`);
+      if (newName) {
+        axios.put(`${API_URL}/items/${id}`, { name: newName })
+          .then(() => fetchItems())
+          .catch((error) => console.error('Error editing item:', error));
+      }
+    } catch (error) {
+      console.error('Error fetching item:', error);
+    }
   };
+  
 
   const handleDeleteItem = async (id) => {
     try {

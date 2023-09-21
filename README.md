@@ -1,5 +1,17 @@
 # Proyecto final de Microblog de devCamp fullstack developer Bottega University
 
+`App Urls`: 
+
+* Frontend: https://arretxea-final-13da9b17d80e.herokuapp.com/
+* Backend: https://arretxea-backend-final-5c29dc930998.herokuapp.com/
+
+`GitHub Repos`: 
+
+* Frontend: https://github.com/koldo-a/final-project-devcamp-sept23
+* Backend: https://github.com/koldo-a/backend
+
+`Usuario de Prueba` (sin necesidad de contraseña): koldo@gmail.com, pepe@gmail.com 
+
 ## Descripción de la Aplicación
 
 Este proyecto es un Microblog desarrollado como parte final del programa de Certificado de Desarrollo Full Stack. El Microblog se centra en permitir a los usuarios registrados crear, ver, editar y eliminar publicaciones. Cada publicación puede contener únicamente un contenido asociado (aunque es ampliable). Además, el sistema incluye un sistema de autenticación para que los usuarios puedan iniciar sesión de manera sencilla.
@@ -42,13 +54,15 @@ Para cumplir con los requisitos del proyecto, he agregado las siguientes caracte
 Para cumplir con el requisito de incluir una característica que no se enseñó en el curso, hemos incorporado un sistema de búsqueda en el input principal que permite tanto añadir un nuevo texto como buscar. Esto se realiza a través de los botones ‘Add’ y ‘Search’.
 Enlaces Relevantes
 
-`Aplicación en Vivo`: https://proyecto-final-frontend-production-6e2d.up.railway.app/
+`Aplicación en Vivo`: 
+
+* Frontend: https://arretxea-final-13da9b17d80e.herokuapp.com/
+* Backend: https://arretxea-backend-final-5c29dc930998.herokuapp.com/
 
 `Repositorio en GitHub`: 
 
-Frontend: https://github.com/koldo-a/proyecto-final-frontend
-
-Backend: https://github.com/koldo-a/backend-2
+* Frontend: https://github.com/koldo-a/final-project-devcamp-sept23
+* Backend: https://github.com/koldo-a/backend
 
 `Usuario de Prueba` (sin necesidad de contraseña): koldo@gmail.com, pepe@gmail.com 
 

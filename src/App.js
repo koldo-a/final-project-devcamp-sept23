@@ -13,6 +13,7 @@ const App = () => {
   const [items, setItems] = useState([]);
   const [editMode] = useState(false);
   const [loginMessage, setLoginMessage] = useState('');
+  const [logoutMessage, setLogoutMessage] = useState('');
   const [registerMessage, setregisterMessage] = useState('');
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
@@ -28,6 +29,15 @@ const App = () => {
       setLoginMessage('');
     }, 5000); 
   };
+
+  const showLogoutMessage = (message) => {
+    setLogoutMessage(message);
+
+    setTimeout(() => {
+      setLoginMessage('');
+    }, 5000); 
+  };
+
   const showregisterMessage = (message) => {
     setregisterMessage(message);
 
@@ -57,6 +67,7 @@ const App = () => {
   try {
     const response = await axios.get(`${API_URL}/logout`);
     console.log(response.data.message);
+    showLogoutMessage(response.data.message); 
     setIsLoggedIn(false); 
     setItems([]); 
     navigate('/login');
@@ -156,6 +167,7 @@ const App = () => {
       <div className='messages'>
         <div className={`login-msg ${registerMessage ? 'visible' : ''}`}>{registerMessage}</div>
         <div className={`login-msg ${loginMessage ? 'visible' : ''}`}>{loginMessage}</div>
+        <div className={`login-msg ${logoutMessage ? 'visible' : ''}`}>{logoutMessage}</div>
       </div>
       {isLoggedIn ? (
         <div className='container'>

@@ -49,7 +49,9 @@ const App = () => {
 
   const handleLogin = async () => {
   try {
-    const response = await axios.post(`${API_URL}/login`, { email: email });
+    const response = await axios.post(`${API_URL}/login`, { email: email }, {
+      timeout: 3000
+    });
     if (response.status === 200) {
       console.log(response.status);
       showLoginMessage(response.data.message); 

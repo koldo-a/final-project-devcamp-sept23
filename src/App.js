@@ -166,6 +166,7 @@ const handleEditItem = (id) => {
   };
 
 useEffect(() => {
+  console.log('useEffect is running');
   const token = localStorage.getItem('token'); // Obtener el token guardado en localStorage
 
   if (token) {

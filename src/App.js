@@ -56,6 +56,7 @@ const App = () => {
       console.log(response.status);
       showLoginMessage(response.data.message); 
       setIsLoggedIn(true);
+      localStorage.setItem('token', response.data.token); // Guardar el token en localStorage
       setIdUsers(response.data.idusers); 
       fetchItems();
     }
@@ -71,6 +72,7 @@ const App = () => {
     console.log(response.data.message);
     showLogoutMessage(response.data.message); 
     setIsLoggedIn(false); 
+    localStorage.removeItem('token'); // Eliminar el token de localStorage
     setItems([]); 
     navigate('/login');
     setEmail('');
@@ -163,6 +165,15 @@ const handleEditItem = (id) => {
     }
   };
 
+useEffect(() => {
+  const token = localStorage.getItem('token'); // Obtener el token guardado en localStorage
+
+  if (token) {
+    // Verificar si el token existe
+    setIsLoggedIn(true); // Establecer el estado de isLoggedIn en true
+    // Realizar cualquier otra acción necesaria para manejar la sesión iniciada
+  }
+}, []);
 
   return (
     <div className='container1'>

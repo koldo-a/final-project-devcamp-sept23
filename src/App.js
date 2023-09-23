@@ -155,7 +155,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    const ws = new WebSocket('wss://arretxea-final-13da9b17d80e.herokuapp.com/ws');
+    const ws = new WebSocket('wss://arretxea-final-13da9b17d80e.herokuapp.com/ws') || new WebSocket('ws://https://final-project-devcamp-sept23-production.up.railway.app/ws');
 
     ws.onopen = () => {
       console.log('WebSocket connection opened');

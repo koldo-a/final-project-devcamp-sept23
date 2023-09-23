@@ -65,7 +65,6 @@ const App = () => {
   const handleLogout = async () => {
     try {
       const response = await axios.get(`${API_URL}/logout`);
-      console.log(response.data.message);
       showLogoutMessage(response.data.message);
       setIsLoggedIn(false);
       localStorage.removeItem('token');
@@ -101,8 +100,6 @@ const App = () => {
     try {
       const response = await axios.get(`${API_URL}/items`);
       setItems(response.data.filter((item) => item.itemiduser === idusers));
-      console.log(response.data);
-      console.log(email);
     } catch (error) {
       console.error('Error fetching items:', error);
     }
@@ -128,8 +125,6 @@ const App = () => {
         const response = await axios.post(`${API_URL}/items`, { name: inputValue, itemiduser: idusers });
         setInputValue('');
         fetchItems();
-        console.log(response.data.message);
-        console.log(items);
       } catch (error) {
         console.error('Error adding item:', error);
       }
@@ -154,19 +149,34 @@ const App = () => {
     try {
       const response = await axios.delete(`${API_URL}/items/${id}`);
       fetchItems();
-      console.log(response.data.message);
     } catch (error) {
       console.error('Error deleting item:', error);
     }
   };
 
   useEffect(() => {
-    console.log('useEffect is running');
-    const token = localStorage.getItem('token');
+    const ws = new WebSocket('wss://arretxea-final-13da9b17d80e.herokuapp.com/ws');
 
-    if (token) {
-      setIsLoggedIn(true);
-    }
+    ws.onopen = () => {
+      console.log('WebSocket connection opened');
+    };
+
+    ws.onmessage = (event) => {
+      const message = JSON.parse(event.data);
+      console.log('WebSocket message received:', message);
+      // Aquí puedes manejar los mensajes WebSocket recibidos y actualizar tu estado según sea necesario
+    };
+
+    ws.onclose = () => {
+      console.log('WebSocket connection closed');
+      // Puedes manejar la reconexión aquí si es necesario
+    };
+
+    return () => {
+      if (ws) {
+        ws.close();
+      }
+    };
   }, []);
 
   return (
@@ -195,7 +205,6 @@ const App = () => {
               placeholder='Enter an item'
             />
             <button onClick={handleAddItem}>{editMode ? 'Save' : 'Add'}</button>
-
             <button onClick={handleSearch}>Search</button>
           </div>
           <ul className='listado-items'>
@@ -230,8 +239,8 @@ const App = () => {
       <div className='author'>
         Author: <a href='koldo.arretxea@gmail.com'>koldo.arretxea@gmail.com</a>
       </div>
-      
-</div>
-);
-      }
+    </div>
+  );
+};
+
 export default App;

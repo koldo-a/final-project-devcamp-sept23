@@ -63,19 +63,18 @@ const App = () => {
   };
 
   const handleLogout = async () => {
-  try {
-    const response = await axios.get(`${API_URL}/logout`);
-    console.log(response.data.message);
-    showLogoutMessage(response.data.message); 
-    setIsLoggedIn(false); 
-    localStorage.removeItem('token'); // Eliminar el token de localStorage
-    setItems([]); 
-    navigate('/login');
-    setEmail('');
-    setIdUsers(null);
-  } catch (error) {
-    console.error(error.response.data.message);
-  }
+    try {
+      const response = await axios.get(`${API_URL}/logout`);
+      showLogoutMessage(response.data.message);
+      setIsLoggedIn(false);
+      localStorage.removeItem('token');
+      setItems([]);
+      navigate('/login');
+      setEmail('');
+      setIdUsers(null);
+    } catch (error) {
+      console.error(error.response.data.message);
+    }
   };
 
   const handleRegister = async () => {
@@ -100,9 +99,7 @@ const App = () => {
   const fetchItems = async () => {
     try {
       const response = await axios.get(`${API_URL}/items`);
-      setItems(response.data.filter(item => item.itemiduser === idusers));
-      console.log(response.data);
-      console.log(email)
+      setItems(response.data.filter((item) => item.itemiduser === idusers));
     } catch (error) {
       console.error('Error fetching items:', error);
     }
@@ -157,16 +154,30 @@ const App = () => {
     }
   };
 
-useEffect(() => {
-  console.log('useEffect is running');
-  const token = localStorage.getItem('token'); // Obtener el token guardado en localStorage
+  useEffect(() => {
+    const ws = new WebSocket('wss://arretxea-final-13da9b17d80e.herokuapp.com/ws');
 
-  if (token) {
-    // Verificar si el token existe
-    setIsLoggedIn(true); // Establecer el estado de isLoggedIn en true
-    // Realizar cualquier otra acción necesaria para manejar la sesión iniciada
-  }
-}, []);
+    ws.onopen = () => {
+      console.log('WebSocket connection opened');
+    };
+
+    ws.onmessage = (event) => {
+      const message = JSON.parse(event.data);
+      console.log('WebSocket message received:', message);
+      // Aquí puedes manejar los mensajes WebSocket recibidos y actualizar tu estado según sea necesario
+    };
+
+    ws.onclose = () => {
+      console.log('WebSocket connection closed');
+      // Puedes manejar la reconexión aquí si es necesario
+    };
+
+    return () => {
+      if (ws) {
+        ws.close();
+      }
+    };
+  }, []);
 
   return (
     <div className='container1'>
@@ -194,7 +205,6 @@ useEffect(() => {
               placeholder='Enter an item'
             />
             <button onClick={handleAddItem}>{editMode ? 'Save' : 'Add'}</button>
-            
             <button onClick={handleSearch}>Search</button>
           </div>
           <ul className='listado-items'>
@@ -226,8 +236,9 @@ useEffect(() => {
           <button onClick={handleRegister}>Register</button>
         </div>
       )}
-
-        <div className='author'>Author:&nbsp;<a href='koldo.arretxea@gmail.com>'>koldo.arretxea@gmail.com</a></div>
+      <div className='author'>
+        Author: <a href='koldo.arretxea@gmail.com'>koldo.arretxea@gmail.com</a>
+      </div>
     </div>
   );
 };

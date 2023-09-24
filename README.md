@@ -1,11 +1,26 @@
 # Proyecto final de Microblog de devCamp fullstack developer Bottega University
 
+<span style="font-family:Papyrus; font-size:4em; color:blue;">OPCIÓN 1</span>
+
+`App Urls`: 
+
+* Frontend: https://final-project-devcamp-sept23-production.up.railway.app/
+* Backend: https://backend-production-f350.up.railway.app/
+
+---
+
+<span style="font-family:Papyrus; font-size:4em; color:blue;">OPCIÓN 2</span>
+
 `App Urls`: 
 
 * Frontend: https://arretxea-final-13da9b17d80e.herokuapp.com/
 * Backend: https://arretxea-backend-final-5c29dc930998.herokuapp.com/
 
+---
+
 `GitHub Repos`: 
+
+* To test it **locally**: https://github.com/koldo-a/Proyecto-Final-Oct2023
 
 * Frontend: https://github.com/koldo-a/final-project-devcamp-sept23
 * Backend: https://github.com/koldo-a/backend

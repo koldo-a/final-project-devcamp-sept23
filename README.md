@@ -1,6 +1,6 @@
 # Proyecto final de Microblog de devCamp fullstack developer Bottega University
 
-<span style="font-family:Papyrus; font-size:4em; color:blue;">OPCIÓN 1</span>
+**OPCIÓN 1**
 
 `App Urls`: 
 
@@ -9,7 +9,7 @@
 
 ---
 
-<span style="font-family:Papyrus; font-size:4em; color:blue;">OPCIÓN 2</span>
+**OPCIÓN 2**
 
 `App Urls`: 
 

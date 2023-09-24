@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; 
+
 import './styles/App.scss';
 import Home from './home';
 
 const App = () => {
   const [email, setEmail] = useState('');
-  const [idusers, setIdUsers] = useState(null);
+  const [idusers, setIdUsers] = useState(null); 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const [items, setItems] = useState([]);
@@ -19,62 +20,64 @@ const App = () => {
 
   const API_URL = process.env.REACT_APP_API_URL;
 
+
+
   const showLoginMessage = (message) => {
     setLoginMessage(message);
+
     setTimeout(() => {
       setLoginMessage('');
-    }, 5000);
+    }, 5000); 
   };
 
   const showLogoutMessage = (message) => {
     setLogoutMessage(message);
+
     setTimeout(() => {
       setLoginMessage('');
-    }, 5000);
+    }, 5000); 
   };
 
   const showregisterMessage = (message) => {
     setregisterMessage(message);
+
     setTimeout(() => {
       setregisterMessage('');
     }, 5000);
   };
 
+
   const handleLogin = async () => {
-    try {
-      const response = await axios.post(
-        `${API_URL}/login`,
-        { email: email },
-        {
-          timeout: 3000,
-        }
-      );
-      if (response.status === 200) {
-        showLoginMessage(response.data.message);
-        setIsLoggedIn(true);
-        localStorage.setItem('token', response.data.token);
-        setIdUsers(response.data.idusers);
-        fetchItems();
-      }
-    } catch (error) {
-      showLoginMessage(error.response.data.message);
-      console.error(error.response.data.message);
+  try {
+    const response = await axios.post(`${API_URL}/login`, { email: email }, {
+      timeout: 3000
+    });
+    if (response.status === 200) {
+      console.log(response.status);
+      showLoginMessage(response.data.message); 
+      setIsLoggedIn(true);
+      setIdUsers(response.data.idusers); 
+      fetchItems();
     }
+  } catch (error) {
+      showLoginMessage(error.response.data.message); 
+      console.error(error.response.data.message);
+  }
   };
 
   const handleLogout = async () => {
-    try {
-      const response = await axios.get(`${API_URL}/logout`);
-      showLogoutMessage(response.data.message);
-      setIsLoggedIn(false);
-      localStorage.removeItem('token');
-      setItems([]);
-      navigate('/login');
-      setEmail('');
-      setIdUsers(null);
-    } catch (error) {
-      console.error(error.response.data.message);
-    }
+  try {
+    const response = await axios.get(`${API_URL}/logout`);
+    console.log(response.data.message);
+    showLogoutMessage(response.data.message); 
+    setIsLoggedIn(false); 
+    setItems([]); 
+    navigate('/login');
+    setEmail('');
+    setIdUsers(null);
+  } catch (error) {
+    console.error(error.response.data.message);
+  }
   };
 
   const handleRegister = async () => {
@@ -85,21 +88,24 @@ const App = () => {
         setEmail('');
       }
     } catch (error) {
-      showregisterMessage(error.response.data.message);
-      console.error(error.response.data.message);
+        showregisterMessage(error.response.data.message);
+        console.error(error.response.data.message);
     }
   };
 
-  useEffect(() => {
+    useEffect(() => {
     if (idusers !== null) {
       fetchItems();
     }
-  }, [idusers]);
+  // eslint-disable-next-line
+  }, [idusers]); 
 
   const fetchItems = async () => {
     try {
       const response = await axios.get(`${API_URL}/items`);
-      setItems(response.data.filter((item) => item.itemiduser === idusers));
+      setItems(response.data.filter(item => item.itemiduser === idusers));
+      console.log(response.data);
+      console.log(email)
     } catch (error) {
       console.error('Error fetching items:', error);
     }
@@ -108,12 +114,12 @@ const App = () => {
   const handleSearch = () => {
     if (searchTerm) {
       const lowercasedSearchTerm = searchTerm.toLowerCase();
-      setItems(items.filter((item) => item.name.toLowerCase().includes(lowercasedSearchTerm)));
+      setItems(items.filter(item => item.name.toLowerCase().includes(lowercasedSearchTerm)));
     } else {
       fetchItems();
     }
   };
-
+  
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
     setSearchTerm(e.target.value);
@@ -125,6 +131,8 @@ const App = () => {
         const response = await axios.post(`${API_URL}/items`, { name: inputValue, itemiduser: idusers });
         setInputValue('');
         fetchItems();
+        console.log(response.data.message);
+        console.log(items);
       } catch (error) {
         console.error('Error adding item:', error);
       }
@@ -132,12 +140,11 @@ const App = () => {
   };
 
   const handleEditItem = (id) => {
-    const newName = prompt('Enter the new value:');
+    const newName = prompt('Enter the new name');
     if (newName) {
       try {
-        axios
-          .put(`${API_URL}/items/${id}`, { name: newName })
-          .then(() => fetchItems())
+        axios.put(`${API_URL}/items/${id}`, { name: newName })
+          .then(() => fetchItems()) 
           .catch((error) => console.error('Error editing item:', error));
       } catch (error) {
         console.error('Error editing item:', error);
@@ -149,35 +156,12 @@ const App = () => {
     try {
       const response = await axios.delete(`${API_URL}/items/${id}`);
       fetchItems();
+      console.log(response.data.message);
     } catch (error) {
       console.error('Error deleting item:', error);
     }
   };
 
-  useEffect(() => {
-    const ws = new WebSocket('wss://arretxea-final-13da9b17d80e.herokuapp.com/ws') || new WebSocket('wss://https://final-project-devcamp-sept23-production.up.railway.app/ws');
-
-    ws.onopen = () => {
-      console.log('WebSocket connection opened');
-    };
-
-    ws.onmessage = (event) => {
-      const message = JSON.parse(event.data);
-      console.log('WebSocket message received:', message);
-      // Aquí puedes manejar los mensajes WebSocket recibidos y actualizar tu estado según sea necesario
-    };
-
-    ws.onclose = () => {
-      console.log('WebSocket connection closed');
-      // Puedes manejar la reconexión aquí si es necesario
-    };
-
-    return () => {
-      if (ws) {
-        ws.close();
-      }
-    };
-  }, []);
 
   return (
     <div className='container1'>
@@ -190,55 +174,50 @@ const App = () => {
       {isLoggedIn ? (
         <div className='container'>
           <div className='container-heading'>
-            <p>
-              Welcome <b>{email}</b>! You are authenticated.
-            </p>
-            <button className='cerrar-button' onClick={handleLogout}>
-              Logout
-            </button>
+            <p>Bienvenido <b>{email}</b>! Estás autenticado.</p>
+            <button className='cerrar-button' onClick={handleLogout}>Logout</button>
           </div>
           <div className='subcontainer'>
             <input
-              type='text'
+              type="text"
               value={inputValue}
               onChange={handleInputChange}
-              placeholder='Enter an item'
+              placeholder="Enter an item"
             />
             <button onClick={handleAddItem}>{editMode ? 'Save' : 'Add'}</button>
+            
             <button onClick={handleSearch}>Search</button>
-          </div>
+         </div>
           <ul className='listado-items'>
             {items.map((item) => (
               <li key={item.id}>
-                <div className='texto-li'>
-                  {item.name}
-                  <div className='fecha-li'>{item.fecha}</div>
-                </div>
+                <div className='texto-li'>{item.name}<div className='fecha-li'>{item.fecha}</div></div> 
+                
                 <div className='li-buttons'>
-                  <button className='button-edit' onClick={() => handleEditItem(item.id)}>
-                    Edit
-                  </button>
+                  <button className='button-edit' onClick={() => handleEditItem(item.id)}>Edit</button>
                   <button onClick={() => handleDeleteItem(item.id)}>Delete</button>
                 </div>
               </li>
             ))}
+
+
           </ul>
+          
         </div>
       ) : (
         <div className='login'>
           <input
-            type='text'
+            type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder='Email'
+            placeholder="Correo electrónico"
           />
           <button onClick={handleLogin}>Login</button>
           <button onClick={handleRegister}>Register</button>
         </div>
       )}
-      <div className='author'>
-        Author: <a href='koldo.arretxea@gmail.com'>koldo.arretxea@gmail.com</a>
-      </div>
+
+        <div className='author'>Author:&nbsp;<a href='koldo.arretxea@gmail.com>'>koldo.arretxea@gmail.com</a></div>
     </div>
   );
 };
